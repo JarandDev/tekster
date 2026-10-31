@@ -1,0 +1,36 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import {render} from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import {formatDate, getPosts} from '../lib/posts';
+
+export async function getStaticPaths() {
+    return (await getPosts()).map((post) => ({
+        params: {id: post.id},
+        props: {post},
+    }));
+}
+
+interface Props {
+    post: CollectionEntry<'tekster'>;
+}
+
+const {post} = Astro.props;
+const {Content} = await render(post);
+---
+<Layout title={`${post.data.title} – J4D`} description={post.data.description} noindex={post.data.draft} article>
+    <article class="post">
+        <div class="intro">
+            <p class="post-meta">
+                <time datetime={post.data.date.toISOString().slice(0, 10)}>{formatDate(post.data.date)}</time>
+                {post.data.draft && <span class="draft-label">Kladd – vises bare lokalt</span>}
+            </p>
+            <h1 class="ds-heading">{post.data.title}</h1>
+            <p class="ds-paragraph">{post.data.description}</p>
+        </div>
+        <div class="prose">
+            <Content/>
+        </div>
+    </article>
+    <p class="all-posts"><a class="ds-link" href="/">Alle tekster</a></p>
+</Layout>

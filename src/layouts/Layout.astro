@@ -1,0 +1,68 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+    noindex?: boolean;
+    article?: boolean;
+}
+
+const {
+    title = 'Tekster – J4D',
+    description = 'Tekster og historier om teknologi, sykkelturer og det som ellers dukker opp.',
+    noindex = false,
+    article = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html data-color-scheme="light" data-size="md" lang="nb">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="light dark" name="color-scheme"/>
+    <meta content={description} name="description"/>
+    {noindex &&
+            <meta content="noindex, nofollow" name="robots"/>}
+    <meta content={title} property="og:title"/>
+    <meta content={description} property="og:description"/>
+    <meta content={canonical.href} property="og:url"/>
+    <meta content={article ? 'article' : 'website'} property="og:type"/>
+    <meta content="nb_NO" property="og:locale"/>
+    <title>{title}</title>
+    <link href={canonical} rel="canonical"/>
+    <link href="https://cdn.jsdelivr.net/npm/@digdir/designsystemet-css@1.23.0/dist/src/index.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@digdir/designsystemet-css@1.23.0/dist/theme/designsystemet.css" rel="stylesheet"/>
+    <link href="/assets/css/style.css" rel="stylesheet"/>
+    <link href="/assets/css/writings.css" rel="stylesheet"/>
+    <script is:inline src="/assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip-link ds-link" href="#main">Hopp til innhold</a>
+<header class="container">
+    <a aria-label="J4D – tekster" class="wordmark ds-focus" href="/">J4D</a>
+    <nav aria-label="Hovedmeny">
+        <ul class="navigation">
+            <li><a class="ds-link" href="https://j4d.dev/">Hjem</a></li>
+            <li><a aria-current={Astro.url.pathname === '/' ? 'page' : undefined} class="ds-link" href="/">Tekster</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <button aria-label="Mørk modus" aria-pressed="false" class="ds-button theme-toggle" data-variant="tertiary" hidden id="theme-toggle" title="Bytt fargetema" type="button">
+            <svg aria-hidden="true" class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewBox="0 0 24 24">
+                <path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/>
+            </svg>
+            <svg aria-hidden="true" class="sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>
+            </svg>
+        </button>
+    </div>
+</header>
+<main class="container" id="main" tabindex="-1">
+    <slot/>
+</main>
+<footer class="container">
+    <p>J4D · txt.j4d.dev · Bygget med <a class="ds-link" href="https://astro.build/" rel="noopener noreferrer" target="_blank">Astro</a> og <a class="ds-link" href="https://designsystemet.no/" rel="noopener noreferrer" target="_blank">Designsystemet</a></p>
+</footer>
+</body>
+</html>

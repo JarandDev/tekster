@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {formatDate, getPosts} from '../lib/posts';
+
+const posts = await getPosts();
+---
+<Layout>
+    <section aria-labelledby="page-heading" class="intro collection-intro">
+        <h1 class="ds-heading" data-size="lg" id="page-heading">Tekster</h1>
+        <p class="ds-paragraph" data-size="md">Tekster og historier om teknologi, sykkelturer og det som ellers dukker opp.</p>
+    </section>
+    <section aria-label="Alle tekster" class="post-list">
+        {posts.length === 0 ? <p>Her kommer det snart noen tekster.</p> : (
+                <ul>
+                    {posts.map((post) => (
+                            <li>
+                                <article class="post-summary">
+                                    <p class="post-meta">
+                                        <time datetime={post.data.date.toISOString().slice(0, 10)}>{formatDate(post.data.date)}</time>
+                                        {post.data.draft && <span class="draft-label">Kladd</span>}
+                                    </p>
+                                    <h2 class="ds-heading"><a class="ds-link" href={`/${post.id}/`}>{post.data.title}</a></h2>
+                                    <p class="ds-paragraph">{post.data.description}</p>
+                                </article>
+                            </li>
+                    ))}
+                </ul>
+        )}
+    </section>
+</Layout>

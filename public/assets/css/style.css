@@ -1,0 +1,202 @@
+:root {
+    color-scheme: light;
+    /* Orange theme using Designsystemet's semantic color tokens. */
+    --ds-color-accent-background-default: #fffaf5;
+    --ds-color-accent-background-tinted: #fff0e0;
+    --ds-color-accent-surface-default: #ffffff;
+    --ds-color-accent-surface-tinted: #ffe4c7;
+    --ds-color-accent-surface-hover: #ffd5aa;
+    --ds-color-accent-surface-active: #ffc18a;
+    --ds-color-accent-border-subtle: #e8b58b;
+    --ds-color-accent-border-default: #b85c00;
+    --ds-color-accent-border-strong: #984b00;
+    --ds-color-accent-text-subtle: #b85c00;
+    --ds-color-accent-text-default: #b85c00;
+    --ds-color-accent-base-default: #b85c00;
+    --ds-color-accent-base-hover: #984b00;
+    --ds-color-accent-base-active: #783b00;
+    --j4d-orange: #ffad32;
+    --ds-color-accent-base-contrast-subtle: #fff0e0;
+    --ds-color-accent-base-contrast-default: #ffffff;
+    --ds-color-neutral-background-default: #fffaf5;
+    --ds-color-neutral-text-default: #30251f;
+    --ds-color-neutral-text-subtle: #65534a;
+    --ds-color-neutral-border-subtle: #e4cfc0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-feature-settings: "cv05" 1;
+}
+
+:root[data-color-scheme="dark"] {
+    color-scheme: dark;
+    --ds-color-accent-background-default: #241e29;
+    --ds-color-accent-background-tinted: #302636;
+    --ds-color-accent-surface-default: #2d2532;
+    --ds-color-accent-surface-tinted: #493322;
+    --ds-color-accent-surface-hover: #5b3d24;
+    --ds-color-accent-surface-active: #6e4827;
+    --ds-color-accent-border-subtle: #806044;
+    --ds-color-accent-border-default: #ffad32;
+    --ds-color-accent-border-strong: #ffc56d;
+    --ds-color-accent-text-subtle: #ffc56d;
+    --ds-color-accent-text-default: #ffad32;
+    --ds-color-accent-base-default: #ffad32;
+    --ds-color-accent-base-hover: #ffc56d;
+    --ds-color-accent-base-active: #ffda9e;
+    --ds-color-accent-base-contrast-subtle: #493322;
+    --ds-color-accent-base-contrast-default: #241e29;
+    --ds-color-neutral-background-default: #241e29;
+    --ds-color-neutral-text-default: #faf5f0;
+    --ds-color-neutral-text-subtle: #cfc3bb;
+    --ds-color-neutral-border-subtle: #514453;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .theme-transition :is(body, .wordmark, .ds-link, .ds-button, .intro, .ds-heading, .ds-paragraph, footer, footer p) {
+        transition: background-color 500ms ease-in-out, color 500ms ease-in-out, border-color 500ms ease-in-out, text-decoration-color 500ms ease-in-out;
+    }
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    background: var(--ds-color-neutral-background-default, #fffaf5);
+    color: var(--ds-color-neutral-text-default, #30251f);
+}
+
+.container {
+    width: min(100% - 3rem, 68rem);
+    margin-inline: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding-block: 2rem;
+}
+
+.wordmark {
+    display: inline-block;
+    color: var(--ds-color-accent-text-default, #b85c00);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    text-decoration: none;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation .ds-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    text-decoration: none;
+}
+
+.navigation [aria-current="page"] {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--j4d-orange);
+    text-underline-offset: 0.5rem;
+}
+
+.navigation [aria-disabled="true"] {
+    color: var(--ds-color-neutral-text-subtle, #65534a);
+    cursor: default;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-inline-start: auto;
+    flex-shrink: 0;
+}
+
+.theme-toggle {
+    width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+}
+
+.theme-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.theme-toggle .sun, [data-color-scheme="dark"] .theme-toggle .moon {
+    display: none;
+}
+
+[data-color-scheme="dark"] .theme-toggle .sun {
+    display: block;
+}
+
+@media (max-width: 30rem) {
+    header {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-block: 1.25rem;
+    }
+
+    header nav {
+        order: 1;
+        flex-basis: 100%;
+    }
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(4rem, 12vw, 9rem);
+}
+
+.intro {
+    width: 100%;
+    border-inline-start: 4px solid var(--j4d-orange, #ffad32);
+    padding-inline-start: clamp(1.25rem, 4vw, 3rem);
+}
+
+h1.ds-heading:not([data-size]) {
+    max-width: 24ch;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.intro .ds-paragraph:not([data-size]) {
+    max-width: 70ch;
+    margin-block: 1.75rem 0;
+    color: var(--ds-color-neutral-text-subtle, #65534a);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.65;
+    text-wrap: pretty;
+}
+
+footer {
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--ds-color-neutral-border-subtle, #e4cfc0);
+    color: var(--ds-color-neutral-text-subtle, #65534a);
+    font-size: 0.875rem;
+}
+
+footer p {
+    margin: 0;
+}

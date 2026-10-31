@@ -1,0 +1,180 @@
+/* The base stylesheet and theme script are copied from hjem for independent deployment. */
+main.container {
+    display: block;
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    top: 0;
+    transform: translateY(-150%);
+    z-index: 1;
+    padding: 0.75rem;
+    background: var(--ds-color-neutral-background-default);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+header .wordmark {
+    white-space: nowrap;
+}
+
+.intro {
+    max-width: 52rem;
+}
+
+.collection-intro .ds-paragraph {
+    margin-block: 1rem 0;
+    color: var(--ds-color-neutral-text-subtle);
+}
+
+.post-list {
+    max-width: 48rem;
+    margin-block-start: 3rem;
+}
+
+.post-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-summary {
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.post-summary h2 {
+    margin-block: 0.5rem 0.75rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.post-summary > .ds-paragraph {
+    margin: 0;
+    color: var(--ds-color-neutral-text-subtle);
+    line-height: 1.7;
+}
+
+.post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-block: 0 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ds-color-neutral-text-subtle);
+}
+
+.draft-label {
+    color: var(--ds-color-accent-text-default);
+    font-weight: 600;
+}
+
+.post {
+    max-width: 48rem;
+    margin-inline: auto;
+}
+
+.post h1 {
+    overflow-wrap: anywhere;
+}
+
+.prose {
+    margin-block-start: 2.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.prose :is(h2, h3, h4, h5, h6) {
+    margin-block: 2rem 0.75rem;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.prose h2 {
+    font-size: 1.75rem;
+}
+
+.prose h3 {
+    font-size: 1.375rem;
+}
+
+.prose :is(p, ul, ol, blockquote, pre, table) {
+    margin-block: 0 1.5rem;
+}
+
+.prose a {
+    color: var(--ds-color-accent-text-default);
+    text-underline-offset: 0.2em;
+}
+
+.prose a:focus-visible {
+    outline: 3px solid var(--ds-color-accent-border-default);
+    outline-offset: 3px;
+}
+
+.prose img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+}
+
+.prose blockquote {
+    border-inline-start: 3px solid var(--j4d-orange);
+    padding-inline-start: 1.25rem;
+    margin-inline: 0;
+    color: var(--ds-color-neutral-text-subtle);
+}
+
+.prose pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 1.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.prose :not(pre) > code {
+    padding: 0.15em 0.35em;
+    border-radius: 0.2rem;
+    background: var(--ds-color-accent-background-tinted);
+    font-size: 0.9em;
+}
+
+.prose table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.prose :is(th, td) {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--ds-color-neutral-border-subtle);
+    text-align: start;
+}
+
+.all-posts {
+    max-width: 48rem;
+    margin: 3rem auto 0;
+}
+
+@media (max-width: 48rem) {
+    header.container {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    header nav {
+        order: 1;
+        flex-basis: 100%;
+    }
+}
