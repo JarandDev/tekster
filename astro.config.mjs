@@ -4,5 +4,8 @@ export default defineConfig({
     site: 'https://txt.j4d.dev',
     output: 'static',
     outDir: './www',
-    trailingSlash: 'always',
+    trailingSlash: 'never',
+    build: {
+        format: 'file',
+    },
 });
