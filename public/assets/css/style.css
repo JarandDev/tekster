@@ -107,7 +107,7 @@ header {
     text-decoration: none;
 }
 
-.navigation [aria-current="page"] {
+.navigation :is([aria-current="page"], .section-active) {
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 2px;
