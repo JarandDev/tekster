@@ -5,6 +5,7 @@ interface Props {
     noindex?: boolean;
     article?: boolean;
     textsIndex?: boolean;
+    textsSection?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
     noindex = false,
     article = false,
     textsIndex = false,
+    textsSection = false,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -41,11 +43,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <body>
 <a class="skip-link ds-link" href="#main">Hopp til innhold</a>
 <header class="container">
-    <a aria-label="J4D – tekster" class="wordmark ds-focus" href="/">J4D</a>
+    <a aria-label="J4D – hjem" class="wordmark ds-focus" href="https://j4d.dev/">J4D</a>
     <nav aria-label="Hovedmeny">
         <ul class="navigation">
             <li><a class="ds-link" href="https://j4d.dev/">Hjem</a></li>
-            <li><a aria-current={textsIndex ? 'page' : undefined} class:list={['ds-link', { 'section-active': article }]} href="/">Tekster</a></li>
+            <li><a aria-current={textsIndex ? 'page' : undefined} class:list={['ds-link', { 'section-active': article || textsSection }]} href="/">Tekster</a></li>
         </ul>
     </nav>
     <div class="header-actions">
