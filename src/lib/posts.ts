@@ -8,7 +8,12 @@ export async function getPosts() {
 
 export function getPostPath(post: CollectionEntry<'tekster'>) {
     const date = post.data.date.toISOString().slice(0, 10);
-    return `${date}/${post.id}`;
+    const match = post.id.match(/(^|\/)(\d{4}-\d{2}-\d{2})-/);
+    if (match && match[2] !== date) {
+        throw new Error(`Datoen i filnavnet for "${post.id}" (${match[2]}) stemmer ikke med datoen i metadataene (${date}).`);
+    }
+    const id = match ? post.id.replace(match[0], match[1]) : post.id;
+    return `${date}/${id}`;
 }
 
 export function formatDate(date: Date) {
