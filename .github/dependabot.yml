@@ -6,6 +6,10 @@ updates:
         schedule:
             interval: "cron"
             cronjob: "0 4 * * *"
+        ignore:
+            -   dependency-name: "typescript"
+                versions:
+                    - ">=7.0.0"
         groups:
             all-version-updates:
                 patterns:
