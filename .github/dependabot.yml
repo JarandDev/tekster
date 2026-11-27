@@ -6,6 +6,14 @@ updates:
         schedule:
             interval: "cron"
             cronjob: "0 4 * * *"
+        groups:
+            all-version-updates:
+                patterns:
+                    - "*"
+            all-security-updates:
+                applies-to: security-updates
+                patterns:
+                    - "*"
         commit-message:
             prefix: "deps"
         assignees:
@@ -15,6 +23,14 @@ updates:
         schedule:
             interval: "cron"
             cronjob: "0 4 * * *"
+        groups:
+            all-version-updates:
+                patterns:
+                    - "*"
+            all-security-updates:
+                applies-to: security-updates
+                patterns:
+                    - "*"
         commit-message:
             prefix: "deps"
         assignees:
