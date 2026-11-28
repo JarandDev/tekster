@@ -39,10 +39,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link href="https://cdn.jsdelivr.net/npm/@digdir/designsystemet-css@1.23.0/dist/theme/designsystemet.css" rel="stylesheet"/>
     <link href="/assets/css/style.css" rel="stylesheet"/>
     <link href="/assets/css/writings.css" rel="stylesheet"/>
-    <link href="https://j4d.dev/shared/header.css" rel="stylesheet"/>
+    <link href="https://j4d.dev/shared/header/header.css" rel="stylesheet"/>
+    <link href="https://j4d.dev/shared/footer/footer.css" rel="stylesheet"/>
     <script is:inline src="https://j4d.dev/shared/theme.js"></script>
     <script is:inline defer src="https://j4d.dev/shared/session.js"></script>
-    <script is:inline defer src="https://j4d.dev/shared/header.js"></script>
+    <script is:inline defer src="https://j4d.dev/shared/header/header.js"></script>
+    <script is:inline defer src="https://j4d.dev/shared/footer/footer.js"></script>
 </head>
 <body>
 <a class="skip-link ds-link" href="#main">Hopp til innhold</a>
@@ -52,8 +54,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <main class="container" id="main" tabindex="-1">
     <slot/>
 </main>
-<footer class="container">
-    <p>J4D · txt.j4d.dev · Bygget med <a class="ds-link" href="https://astro.build/" rel="noopener noreferrer" target="_blank">Astro</a> og <a class="ds-link" href="https://designsystemet.no/" rel="noopener noreferrer" target="_blank">Designsystemet</a> · Kode på <a class="ds-link" href="https://github.com/JarandDev/tekster" rel="noopener noreferrer" target="_blank">JarandDev/tekster</a></p>
-</footer>
+<j4d-footer domain="txt.j4d.dev" built-with='[{"name":"Astro","url":"https://astro.build/"},{"name":"Designsystemet","url":"https://designsystemet.no/"}]' repository='{"name":"JarandDev/tekster","url":"https://github.com/JarandDev/tekster"}'></j4d-footer>
 </body>
 </html>

@@ -104,14 +104,3 @@ h1.ds-heading:not([data-size]) {
     line-height: 1.65;
     text-wrap: pretty;
 }
-
-footer {
-    padding-block: 1.5rem;
-    border-top: 1px solid var(--ds-color-neutral-border-subtle, #e4cfc0);
-    color: var(--ds-color-neutral-text-subtle, #65534a);
-    font-size: 0.875rem;
-}
-
-footer p {
-    margin: 0;
-}
