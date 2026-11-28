@@ -128,6 +128,14 @@ header {
     flex-shrink: 0;
 }
 
+[data-session-account] {
+    min-width: 7.5rem;
+}
+
+.session-checking [data-session-account] {
+    visibility: hidden;
+}
+
 .theme-toggle {
     width: 2.75rem;
     min-height: 2.75rem;
